@@ -7,9 +7,9 @@ echo "${ROOT}"
 cp -fr "$ROOT"/scripts/git-hooks/ "$(git rev-parse --git-dir)"/hooks
 
 # Fetch Secrets
-git clone git@github.com:MrSmart00/peekaboo-hide.git "$ROOT"/hide
-cp "$ROOT"/hide/.secret.sourcery.yml "$ROOT"
-rm -Rf "$ROOT"/hide
+git clone git@github.com:MrSmart00/peekaboo-hide.git "$ROOT"/secret
+cp "$ROOT"/secret/.secret.sourcery.yml "$ROOT"
+rm -Rf "$ROOT"/secret
 
 # Bitrise CLI
 if test ! $(which bitrise); then
