@@ -26,7 +26,7 @@ workflows:
         - cache_paths: |-
             $BITRISE_CACHE_DIR
             $MINT_PATH
-            ./vendor/bundler -> ./Gemfile.lock
+            ./vendor/bundle -> ./Gemfile.lock
     before_run: []
     envs:
     - opts:
