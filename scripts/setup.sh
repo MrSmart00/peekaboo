@@ -31,7 +31,7 @@ echo "  + bootstrap Mint."
 mint bootstrap
 
 echo "  + Create Secret via Sourcery."
-sourcery --config .secret.sourcery.yml
+mint run sourcery --config .secret.sourcery.yml
 rm -rf "$ROOT"/.secret.sourcery.yml
 
 # Bundler
