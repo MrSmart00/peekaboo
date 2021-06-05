@@ -11,14 +11,16 @@ git clone git@github.com:MrSmart00/peekaboo-hide.git "$ROOT"/secret
 cp "$ROOT"/secret/.secret.sourcery.yml "$ROOT"
 rm -Rf "$ROOT"/secret
 
-# Bitrise CLI
-if test ! $(which bitrise); then
-  echo "  + Installing Bitrise CLI..."
-  brew install bitrise
-else 
-  echo "  + Bitrise found."
+if [ -z "${CI:-}" ]; then
+  # Bitrise CLI
+  if test ! $(which bitrise); then
+    echo "  + Installing Bitrise CLI..."
+    brew install bitrise
+  else 
+    echo "  + Bitrise found."
+  fi
 fi
-
+​
 # Mint
 if test ! $(which mint); then
   echo "  + Installing Mint..."
