@@ -1,6 +1,6 @@
-#!/bin/zsh
+#!/bin/sh
 
 # Generate Project
 mint run xcodegen generate
 
-echo "🏁 \e[32mBootstrap Completed!\e[m 🏁"
+echo "🏁 \033[32mBootstrap Completed!\033[m 🏁"

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 ROOT=$(git rev-parse --show-toplevel)
 echo "${ROOT}"
@@ -10,6 +10,14 @@ cp -fr "$ROOT"/scripts/git-hooks/ "$(git rev-parse --git-dir)"/hooks
 git clone git@github.com:MrSmart00/peekaboo-hide.git "$ROOT"/hide
 cp "$ROOT"/hide/.secret.sourcery.yml "$ROOT"
 rm -Rf "$ROOT"/hide
+
+# Bitrise CLI
+if test ! $(which bitrise); then
+  echo "  + Installing Bitrise CLI..."
+  brew install bitrise
+else 
+  echo "  + Bitrise found."
+fi
 
 # Mint
 if test ! $(which mint); then
@@ -39,4 +47,4 @@ echo "  + Installing gems."
 bundle config set --local path 'vendor/bundle'
 bundle install --quiet
 
-echo "🏁 \e[32mSetup Completed!\e[m 🏁"
+echo "🏁 \033[32mSetup Completed!\033[m 🏁"
