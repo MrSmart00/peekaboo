@@ -21,8 +21,17 @@ workflows:
   post-process:
     steps:
     - deploy-to-bitrise-io@1: {}
-    - cache-push@2: {}
+    - cache-push@2:
+        inputs:
+        - cache_paths: |-
+            $BITRISE_CACHE_DIR
+            $MINT_PATH
+            ./vendor/bundler -> ./Gemfile.lock
     before_run: []
+    envs:
+    - opts:
+        is_expand: false
+      MINT_PATH: /usr/local/lib/mint
   pre-process:
     steps:
     - activate-ssh-key@4:
