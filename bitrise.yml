@@ -4,11 +4,11 @@ default_step_lib_source: 'https://github.com/bitrise-io/bitrise-steplib.git'
 project_type: ios
 trigger_map:
 - push_branch: '*'
-  workflow: build
+  workflow: tests
 - pull_request_source_branch: '*'
-  workflow: build
+  workflow: tests
 workflows:
-  build:
+  tests:
     steps:
     - xcode-test@2:
         inputs:
@@ -27,6 +27,7 @@ workflows:
             $BITRISE_CACHE_DIR
             $MINT_PATH
             ./vendor/bundle -> ./Gemfile.lock
+            ./Pods -> ./Podfile.lock
     before_run: []
     envs:
     - opts:
@@ -52,7 +53,7 @@ app:
   envs:
   - opts:
       is_expand: false
-    BITRISE_PROJECT_PATH: peekaboo.xcodeproj
+    BITRISE_PROJECT_PATH: peekaboo.xcworkspace
   - opts:
       is_expand: false
     BITRISE_SCHEME: peekaboo
